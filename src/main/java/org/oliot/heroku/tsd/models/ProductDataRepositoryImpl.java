@@ -79,7 +79,7 @@ class ProductDataRepositoryImpl implements ProductDataRepositoryCustom {
 
         /* remove if already exists */
         Query query = new Query();
-        query.addCriteria(where("epcURI").is(epcURI));
+        query.addCriteria(Criteria.where("epcURI").is(epcURI));
 
         if (mongoTemplate.findAndRemove(query, TSDProductDataType.class) != null) {
             logger.info("Replacing resource: " + epcURI);
