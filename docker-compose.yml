@@ -12,19 +12,5 @@ services:
     networks:
       - back-tier
 
-  appserver:
-    build:
-       context: ./
-       dockerfile: Dockerfile
-    image: tsd
-    environment:
-       MONGODB_URI: "mongodb://database:27017/trusted_data"
-       ADMIN_USERNAME: admin
-       ADMIN_PASSWORD: admin
-    ports:
-      - "8080:8080"
-    networks:
-      - back-tier
-
 networks:
   back-tier:
