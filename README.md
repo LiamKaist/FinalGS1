@@ -6,9 +6,16 @@ GS1 TSD implementation for Research and SMEs
 
 Deploying
 -----------------
-**master** branch is auto deployed [here](https://oliot-tsd.herokuapp.com)
+```
+# Start DB
+sudo docker-compose up -d
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+# Build tsd-heroku
+./mvnw -DskipTests clean dependency:list install
+
+# Run on local heroku cli
+heroku local web -e .env -p 8080
+```
 
 License
 -----------------
