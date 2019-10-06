@@ -41,7 +41,15 @@ import javax.xml.namespace.QName;
 public class ObjectFactory {
 
     private final static QName _ProductData_QNAME = new QName("urn:gs1:tsd:product_data:xsd:1", "productData");
+    private final static QName _ProductClaimsAndEndorsementsModule_QNAME = new QName("urn:gs1:tsd:product_claims_and_endorsements_module:xsd:1", "productClaimsAndEndorsementsModule");
+    private final static QName _FoodAndBeverageIngredientInformationModule_QNAME = new QName("urn:gs1:tsd:food_and_beverage_information_module:xsd:1", "foodAndBeverageIngredientInformationModule");
+    private final static QName _ProductQuantityInformationModule_QNAME = new QName("urn:gs1:tsd:product_quantity_information_module:xsd:1", "productQuantityInformationModule");
+    private final static QName _NutritionalProductInformationModule_QNAME = new QName("urn:gs1:tsd:nutritional_product_information_module:xsd:1", "nutritionalProductInformationModule");
     private final static QName _BasicProductInformationModule_QNAME = new QName("urn:gs1:tsd:basic_product_information_module:xsd:1", "basicProductInformationModule");
+    private final static QName _ProductAllergenInformationModule_QNAME = new QName("urn:gs1:tsd:product_allergen_information_module:xsd:1", "productAllergenInformationModule");
+    private final static QName _ProductInstructionsModule_QNAME = new QName("urn:gs1:tsd:product_instructions_module:xsd:1", "productInstructionsModule");
+    private final static QName _ProductOriginInformationModule_QNAME = new QName("urn:gs1:tsd:product_origin_information_module:xsd:1", "productOriginInformationModule");
+    private final static QName _FoodAndBeveragePreparationInformationModule_QNAME = new QName("urn:gs1:tsd:food_and_beverage_preparation_information_module:xsd:1", "foodAndBeveragePreparationInformationModule");
     private final static QName _BusLineInformationModule_QNAME = new QName("urn:gs1:tsd:bus_line_information_module:xsd:1", "busLineInformationModule");
     private final static QName _BusStopInformationModule_QNAME = new QName("urn:gs1:tsd:bus_stop_information_module:xsd:1", "busStopInformationModule");
 
