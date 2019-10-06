@@ -30,15 +30,15 @@ import java.util.List;
 
 /**
  * <p>Java class for TSD_ProductDataType complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="TSD_ProductDataType">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="gtin" type="{urn:gs1:shared:shared_common:xsd:3}GTINType"/>
+ *         &lt;element name="epcURI" type="{urn:gs1:shared:shared_common:xsd:3}EPCURIType"/>
  *         &lt;element name="targetMarket" type="{urn:gs1:shared:shared_common:xsd:3}CountryCodeType"/>
  *         &lt;element name="informationProviderGLN" type="{urn:gs1:shared:shared_common:xsd:3}GLNType"/>
  *         &lt;element name="informationProviderName" type="{http://www.w3.org/2001/XMLSchema}string"/>
@@ -50,12 +50,12 @@ import java.util.List;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TSD_ProductDataType", namespace = "urn:gs1:tsd:product_data:xsd:1", propOrder = {
-    "gtin",
+    "epcURI",
     "targetMarket",
     "informationProviderGLN",
     "informationProviderName",
@@ -63,19 +63,14 @@ import java.util.List;
     "productDataRecord",
     "avpList"
 })
-@Document(collection = "ProductData")
-@CompoundIndexes({
-        @CompoundIndex(name = "product_idx",
-                unique = true,
-                def = "{'gtin':1, 'targetMarket.value':1}")
-})
+
 public class TSDProductDataType {
     @Id
     @XmlTransient
     private final String id = null;
 
     @XmlElement(required = true)
-    protected String gtin;
+    protected String epcURI;
     @XmlElement(required = true)
     protected CountryCodeType targetMarket;
     @XmlElement(required = true)
@@ -88,36 +83,36 @@ public class TSDProductDataType {
     protected TSDAttributeValuePairListType avpList;
 
     /**
-     * Gets the value of the gtin property.
-     * 
+     * Gets the value of the epcURI property.
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
-    public String getGtin() {
-        return gtin;
+    public String getEpcURI() {
+        return epcURI;
     }
 
     /**
-     * Sets the value of the gtin property.
-     * 
+     * Sets the value of the epcURI property.
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
-    public void setGtin(String value) {
-        this.gtin = value;
+    public void setEpcURI(String value) {
+        this.epcURI = value;
     }
 
     /**
      * Gets the value of the targetMarket property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link CountryCodeType }
-     *     
+     *
      */
     public CountryCodeType getTargetMarket() {
         return targetMarket;
@@ -125,11 +120,11 @@ public class TSDProductDataType {
 
     /**
      * Sets the value of the targetMarket property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link CountryCodeType }
-     *     
+     *
      */
     public void setTargetMarket(CountryCodeType value) {
         this.targetMarket = value;
@@ -137,11 +132,11 @@ public class TSDProductDataType {
 
     /**
      * Gets the value of the informationProviderGLN property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getInformationProviderGLN() {
         return informationProviderGLN;
@@ -149,11 +144,11 @@ public class TSDProductDataType {
 
     /**
      * Sets the value of the informationProviderGLN property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setInformationProviderGLN(String value) {
         this.informationProviderGLN = value;
@@ -161,11 +156,11 @@ public class TSDProductDataType {
 
     /**
      * Gets the value of the informationProviderName property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getInformationProviderName() {
         return informationProviderName;
@@ -173,11 +168,11 @@ public class TSDProductDataType {
 
     /**
      * Sets the value of the informationProviderName property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setInformationProviderName(String value) {
         this.informationProviderName = value;
@@ -185,11 +180,11 @@ public class TSDProductDataType {
 
     /**
      * Gets the value of the timeToLive property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Duration }
-     *     
+     *
      */
     public Duration getTimeToLive() {
         return timeToLive;
@@ -197,11 +192,11 @@ public class TSDProductDataType {
 
     /**
      * Sets the value of the timeToLive property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Duration }
-     *     
+     *
      */
     public void setTimeToLive(Duration value) {
         this.timeToLive = value;
@@ -209,25 +204,25 @@ public class TSDProductDataType {
 
     /**
      * Gets the value of the productDataRecord property.
-     * 
+     *
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
      * This is why there is not a <CODE>set</CODE> method for the productDataRecord property.
-     * 
+     *
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
      *    getProductDataRecord().add(newItem);
      * </pre>
-     * 
-     * 
+     *
+     *
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link TSDProductDataRecordType }
-     * 
-     * 
+     *
+     *
      */
     public List<TSDProductDataRecordType> getProductDataRecord() {
         if (productDataRecord == null) {
@@ -238,11 +233,11 @@ public class TSDProductDataType {
 
     /**
      * Gets the value of the avpList property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link TSDAttributeValuePairListType }
-     *     
+     *
      */
     public TSDAttributeValuePairListType getAvpList() {
         return avpList;
@@ -250,11 +245,11 @@ public class TSDProductDataType {
 
     /**
      * Sets the value of the avpList property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link TSDAttributeValuePairListType }
-     *     
+     *
      */
     public void setAvpList(TSDAttributeValuePairListType value) {
         this.avpList = value;

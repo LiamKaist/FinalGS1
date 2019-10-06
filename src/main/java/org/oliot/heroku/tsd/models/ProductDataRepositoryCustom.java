@@ -23,6 +23,7 @@ import javax.xml.bind.JAXBElement;
 import java.util.List;
 
 interface ProductDataRepositoryCustom {
-    List<JAXBElement> getModuleInformation(Class moduleClass, String gtin);
-    TSDProductDataType getProductHeader(String gtin);
+    List<JAXBElement> getModuleInformation(Class moduleClass, String epcURI);
+    TSDProductDataType getProductHeader(String epcURI);
+    void insertOrReplace(TSDProductDataType tsdProductDataType);
 }

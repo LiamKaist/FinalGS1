@@ -48,7 +48,7 @@ The schema and subsequent updates will be provided on the GS1 websites.
     </xsd:complexType>
     <xsd:complexType name="TSD_ProductDataType">
         <xsd:sequence>
-            <xsd:element name="gtin" type="shared_common:GTINType"/>
+            <xsd:element name="epcURI" type="shared_common:EPCURIType"/>
             <xsd:element name="targetMarket" type="shared_common:CountryCodeType"/>
             <xsd:element name="informationProviderGLN" type="shared_common:GLNType"/>
             <xsd:element name="informationProviderName" type="xsd:string"/>

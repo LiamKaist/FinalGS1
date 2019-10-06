@@ -1439,6 +1439,9 @@ The schema and subsequent updates will be provided on the GS1 websites.
             <xsd:pattern value="\d{18}"/>
         </xsd:restriction>
     </xsd:simpleType>
+    <xsd:simpleType name="EPCURIType">
+        <xsd:restriction base="xsd:string"/>
+    </xsd:simpleType>
     <xsd:simpleType name="GTINType">
         <xsd:restriction base="xsd:string">
             <xsd:pattern value="\d{14}"/>

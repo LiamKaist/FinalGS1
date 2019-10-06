@@ -25,4 +25,6 @@
     <xs:import namespace="urn:gs1:tsd:product_instructions_module:xsd:1" schemaLocation="./tsd/ProductInstructionsModule.xsd" />
     <xs:import namespace="urn:gs1:tsd:product_origin_information_module:xsd:1" schemaLocation="./tsd/ProductOriginInformationModule.xsd" />
     <xs:import namespace="urn:gs1:tsd:product_quantity_information_module:xsd:1" schemaLocation="./tsd/ProductQuantityInformationModule.xsd" />
+    <xs:import namespace="urn:gs1:tsd:bus_line_information_module:xsd:1" schemaLocation="./tsd/BusLineInformationModule.xsd"/>
+    <xs:import namespace="urn:gs1:tsd:bus_stop_information_module:xsd:1" schemaLocation="./tsd/BusStopInformationModule.xsd"/>
 </xs:schema>

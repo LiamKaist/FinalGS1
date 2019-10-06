@@ -42,10 +42,9 @@ class ProductDataRepositoryImpl implements ProductDataRepositoryCustom {
     }
 
     @Override
-    public List<JAXBElement> getModuleInformation(Class moduleClass, String gtin) {
-        String gtin14 = StringUtils.leftPad(gtin, 14, "0");
+    public List<JAXBElement> getModuleInformation(Class moduleClass, String epcURI) {
         Aggregation aggregation = Aggregation.newAggregation(
-                Aggregation.match(Criteria.where("gtin").is(gtin14)),
+                Aggregation.match(Criteria.where("epcURI").is(epcURI)),
                 Aggregation.unwind("$productDataRecord"),
                 Aggregation.unwind("$productDataRecord.module"),
                 Aggregation.unwind("$productDataRecord.module.any"),
@@ -66,12 +65,29 @@ class ProductDataRepositoryImpl implements ProductDataRepositoryCustom {
     }
 
     @Override
-    public TSDProductDataType getProductHeader(String gtin) {
-        String gtin14 = StringUtils.leftPad(gtin, 14, "0");
+    public TSDProductDataType getProductHeader(String epcURI) {
         Query query = new Query();
-        query.addCriteria(Criteria.where("gtin").is(gtin14));
+        query.addCriteria(Criteria.where("epcURI").is(epcURI));
         query.fields().exclude("productDataRecord");
 
         return mongoTemplate.findOne(query, TSDProductDataType.class);
+    }
+
+    @Override
+    public void insertOrReplace(TSDProductDataType tsdProductDataType) {
+        String epcURI = tsdProductDataType.getEpcURI();
+
+        /* remove if already exists */
+        Query query = new Query();
+        query.addCriteria(where("epcURI").is(epcURI));
+
+        if (mongoTemplate.findAndRemove(query, TSDProductDataType.class) != null) {
+            logger.info("Replacing resource: " + epcURI);
+        } else {
+            logger.info("Adding resource: " + epcURI);
+        }
+
+        /* insert */
+        mongoTemplate.save(tsdProductDataType);
     }
 }
