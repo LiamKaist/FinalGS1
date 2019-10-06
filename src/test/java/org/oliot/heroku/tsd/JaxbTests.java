@@ -54,7 +54,7 @@ public class JaxbTests {
                 = (JAXBElement<TSDProductDataType>) unmarshaller.unmarshal(xml);
         TSDProductDataType tsdProductDataType
                 = jaxbElement.getValue();
-        System.out.println(tsdProductDataType.getGtin());
+        System.out.println(tsdProductDataType.getEpcURI());
         ExtensionType obj = tsdProductDataType.getProductDataRecord().get(0).getModule().get(0);
         for (Object o: obj.getAny()) {
             JAXBElement elem = (JAXBElement)o;
