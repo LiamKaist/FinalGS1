@@ -4,6 +4,13 @@ GS1 TSD implementation for Research and SMEs
 [![Build Status](https://travis-ci.org/oliot-tsd/tsd-heroku.svg?branch=master)](https://travis-ci.org/oliot-tsd/tsd-heroku)
 [![Coverage Status](https://coveralls.io/repos/github/oliot-tsd/tsd-heroku/badge.svg?branch=master)](https://coveralls.io/github/oliot-tsd/tsd-heroku?branch=master)
 
+Prerequisits
+-----------------
+JAVA 1.8  
+docker  
+docker-compose  
+heroku cli  
+
 Deploying
 -----------------
 ```
