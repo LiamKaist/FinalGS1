@@ -27,4 +27,8 @@
     <xs:import namespace="urn:gs1:tsd:product_quantity_information_module:xsd:1" schemaLocation="./tsd/ProductQuantityInformationModule.xsd" />
     <xs:import namespace="urn:gs1:tsd:bus_line_information_module:xsd:1" schemaLocation="./tsd/BusLineInformationModule.xsd"/>
     <xs:import namespace="urn:gs1:tsd:bus_stop_information_module:xsd:1" schemaLocation="./tsd/BusStopInformationModule.xsd"/>
+    <!--The Content Liam has added is below-->
+    <xs:import namespace="urn:gs1:tsd:liam_test_module:xsd:1" schemaLocation="./tsd/LiamTestModule.xsd"/>
+    <xs:import namespace="urn:gs1:tsd:tsd_custom:xsd:1" schemaLocation="./tsd/TSDCustom.xsd"/>
+
 </xs:schema>

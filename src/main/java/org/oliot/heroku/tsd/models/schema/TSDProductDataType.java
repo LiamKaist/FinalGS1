@@ -55,11 +55,11 @@ import java.util.List;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TSD_ProductDataType", namespace = "urn:gs1:tsd:product_data:xsd:1", propOrder = {
-    "epcURI",
-    "targetMarket",
-    "informationProviderGLN",
-    "informationProviderName",
-    "timeToLive",
+    "serializedGLN",
+    "buildingName",
+    "buildingCode",
+    "longitude",
+    "latitude",
     "productDataRecord",
     "avpList"
 })
@@ -70,14 +70,15 @@ public class TSDProductDataType {
     private final String id = null;
 
     @XmlElement(required = true)
-    protected String epcURI;
+    protected String serializedGLN;
     @XmlElement(required = true)
-    protected CountryCodeType targetMarket;
+    protected String buildingName;
     @XmlElement(required = true)
-    protected String informationProviderGLN;
+    protected String buildingCode;
     @XmlElement(required = true)
-    protected String informationProviderName;
-    protected Duration timeToLive;
+    protected Double longitude;
+    @XmlElement(required = true)
+    protected Double latitude;
     @XmlElement(required = true)
     protected List<TSDProductDataRecordType> productDataRecord;
     protected TSDAttributeValuePairListType avpList;
@@ -90,8 +91,8 @@ public class TSDProductDataType {
      *     {@link String }
      *
      */
-    public String getEpcURI() {
-        return epcURI;
+    public String getSerializedGLN() {
+        return serializedGLN;
     }
 
     /**
@@ -102,8 +103,8 @@ public class TSDProductDataType {
      *     {@link String }
      *
      */
-    public void setEpcURI(String value) {
-        this.epcURI = value;
+    public void setSerializedGLN(String value) {
+        this.serializedGLN = value;
     }
 
     /**
@@ -111,11 +112,11 @@ public class TSDProductDataType {
      *
      * @return
      *     possible object is
-     *     {@link CountryCodeType }
+     *     {@link String }
      *
      */
-    public CountryCodeType getTargetMarket() {
-        return targetMarket;
+    public String getBuildingName() {
+        return buildingName;
     }
 
     /**
@@ -123,11 +124,11 @@ public class TSDProductDataType {
      *
      * @param value
      *     allowed object is
-     *     {@link CountryCodeType }
+     *     {@link String }
      *
      */
-    public void setTargetMarket(CountryCodeType value) {
-        this.targetMarket = value;
+    public void setBuildingName(String value) {
+        this.buildingName = value;
     }
 
     /**
@@ -138,8 +139,8 @@ public class TSDProductDataType {
      *     {@link String }
      *
      */
-    public String getInformationProviderGLN() {
-        return informationProviderGLN;
+    public String getBuildingCode() {
+        return buildingCode;
     }
 
     /**
@@ -150,8 +151,8 @@ public class TSDProductDataType {
      *     {@link String }
      *
      */
-    public void setInformationProviderGLN(String value) {
-        this.informationProviderGLN = value;
+    public void setBuildingCode(String value) {
+        this.buildingCode = value;
     }
 
     /**
@@ -159,11 +160,11 @@ public class TSDProductDataType {
      *
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link Double }
      *
      */
-    public String getInformationProviderName() {
-        return informationProviderName;
+    public Double getLongitude() {
+        return longitude;
     }
 
     /**
@@ -171,35 +172,36 @@ public class TSDProductDataType {
      *
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link Double }
      *
      */
-    public void setInformationProviderName(String value) {
-        this.informationProviderName = value;
+    public void setLongitude(Double value) {
+        this.longitude = value;
     }
 
-    /**
-     * Gets the value of the timeToLive property.
+    
+     /**
+     * Gets the value of the informationProviderName property.
      *
      * @return
      *     possible object is
-     *     {@link Duration }
+     *     {@link Double }
      *
      */
-    public Duration getTimeToLive() {
-        return timeToLive;
+    public Double getLatitude() {
+        return latitude;
     }
 
     /**
-     * Sets the value of the timeToLive property.
+     * Sets the value of the informationProviderName property.
      *
      * @param value
      *     allowed object is
-     *     {@link Duration }
+     *     {@link Double }
      *
      */
-    public void setTimeToLive(Duration value) {
-        this.timeToLive = value;
+    public void setLatitude(Double value) {
+        this.latitude = value;
     }
 
     /**

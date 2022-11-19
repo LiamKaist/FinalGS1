@@ -54,7 +54,7 @@ public class JaxbTests {
                 = (JAXBElement<TSDProductDataType>) unmarshaller.unmarshal(xml);
         TSDProductDataType tsdProductDataType
                 = jaxbElement.getValue();
-        System.out.println(tsdProductDataType.getEpcURI());
+        System.out.println(tsdProductDataType.getSerializedGLN());
         ExtensionType obj = tsdProductDataType.getProductDataRecord().get(0).getModule().get(0);
         for (Object o: obj.getAny()) {
             JAXBElement elem = (JAXBElement)o;
@@ -90,7 +90,7 @@ public class JaxbTests {
                 = jaxbElement.getValue();
         assertEquals("", "Consumer Market Description", tsdBasicProductInformationModuleType.getConsumerMarketingDescription().get(0).getValue());
         assertEquals("", "Product Name", tsdBasicProductInformationModuleType.getProductName().get(0).getValue());
-        assertEquals("", "12345678", tsdBasicProductInformationModuleType.getGpcCategoryCode());
+        assertEquals("", "123456789", tsdBasicProductInformationModuleType.getGpcCategoryCode());
     }
 
 }

@@ -19,7 +19,7 @@ public class PlaceDataRestController {
         this.repository = repository;
     }
 
-    @GetMapping("/place/{gln}/BasicProductInformation")
+    @GetMapping("/place/{serializedGLN}/BasicProductInformation")
     public TSDBasicProductInformationModuleType getBasicProductInformation(@PathVariable String gln) {
         List<JAXBElement> iterator;
         iterator = repository.getModuleInformation(TSDBasicProductInformationModuleType.class, gln);

@@ -42,9 +42,9 @@ class ProductDataRepositoryImpl implements ProductDataRepositoryCustom {
     }
 
     @Override
-    public List<JAXBElement> getModuleInformation(Class moduleClass, String epcURI) {
+    public List<JAXBElement> getModuleInformation(Class moduleClass, String serializedGLN) {
         Aggregation aggregation = Aggregation.newAggregation(
-                Aggregation.match(Criteria.where("epcURI").is(epcURI)),
+                Aggregation.match(Criteria.where("serializedGLN").is(serializedGLN)),
                 Aggregation.unwind("$productDataRecord"),
                 Aggregation.unwind("$productDataRecord.module"),
                 Aggregation.unwind("$productDataRecord.module.any"),
@@ -64,10 +64,48 @@ class ProductDataRepositoryImpl implements ProductDataRepositoryCustom {
         }
     }
 
+
+
+    /*Following is Liam's code , I want to make a method that gets module information using latitude and longitude */
     @Override
-    public TSDProductDataType getProductHeader(String epcURI) {
+    public List<JAXBElement> getModuleInformationCoord(Class moduleClass, Double longitude, Double latitude) {
+        Aggregation aggregation = Aggregation.newAggregation(
+                Aggregation.match(Criteria.where("longitude").is(longitude)),
+                Aggregation.match(Criteria.where("latitude").is(latitude)),
+                Aggregation.unwind("$productDataRecord"),
+                Aggregation.unwind("$productDataRecord.module"),
+                Aggregation.unwind("$productDataRecord.module.any"),
+                Aggregation.match(Criteria.where("productDataRecord.module.any.declaredType").is(moduleClass.getName())),
+                Aggregation.replaceRoot("productDataRecord.module.any") //What does Replace Root mean??
+        );
+
+        logger.info(aggregation.toString());
+
+        AggregationResults<JAXBElement> aggregationResults =
+                mongoTemplate.aggregate(aggregation, TSDProductDataType.class, JAXBElement.class);
+        try {
+            return aggregationResults.getMappedResults();
+        } catch (IndexOutOfBoundsException e) {
+            logger.info("NO DATA");
+            return null;
+        }
+    }
+
+    @Override
+    public TSDProductDataType getProductHeader(String serializedGLN) {
         Query query = new Query();
-        query.addCriteria(Criteria.where("epcURI").is(epcURI));
+        query.addCriteria(Criteria.where("serializedGLN").is(serializedGLN));
+        query.fields().exclude("productDataRecord");
+
+        return mongoTemplate.findOne(query, TSDProductDataType.class);
+    }
+
+
+    @Override
+    public TSDProductDataType getProductHeaderDouble(Double longitude, Double latitude) {
+        Query query = new Query();
+        query.addCriteria(Criteria.where("longitude").is(longitude));
+        query.addCriteria(Criteria.where("latitude").is(latitude));
         query.fields().exclude("productDataRecord");
 
         return mongoTemplate.findOne(query, TSDProductDataType.class);
@@ -75,16 +113,16 @@ class ProductDataRepositoryImpl implements ProductDataRepositoryCustom {
 
     @Override
     public void insertOrReplace(TSDProductDataType tsdProductDataType) {
-        String epcURI = tsdProductDataType.getEpcURI();
+        String serializedGLN = tsdProductDataType.getSerializedGLN();
 
         /* remove if already exists */
         Query query = new Query();
-        query.addCriteria(Criteria.where("epcURI").is(epcURI));
+        query.addCriteria(Criteria.where("serializedGLN").is(serializedGLN));
 
         if (mongoTemplate.findAndRemove(query, TSDProductDataType.class) != null) {
-            logger.info("Replacing resource: " + epcURI);
+            logger.info("Replacing resource: " + serializedGLN);
         } else {
-            logger.info("Adding resource: " + epcURI);
+            logger.info("Adding resource: " + serializedGLN);
         }
 
         /* insert */

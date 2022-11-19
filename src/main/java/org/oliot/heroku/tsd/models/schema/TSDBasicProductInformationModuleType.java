@@ -61,6 +61,7 @@ import java.util.List;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TSD_BasicProductInformationModuleType", namespace = "urn:gs1:tsd:basic_product_information_module:xsd:1", propOrder = {
     "productName",
+    "extraName",
     "consumerMarketingDescription",
     "gpcCategoryCode",
     "regulatedProductName",
@@ -74,6 +75,8 @@ public class TSDBasicProductInformationModuleType {
 
     @XmlElement(required = true)
     protected List<Description80Type> productName;
+    @XmlElement(required = true)
+    protected List<Description80Type> extraName;
     protected List<Description2500Type> consumerMarketingDescription;
     protected String gpcCategoryCode;
     protected List<Description500Type> regulatedProductName;
@@ -111,6 +114,36 @@ public class TSDBasicProductInformationModuleType {
             productName = new ArrayList<Description80Type>();
         }
         return this.productName;
+    }
+
+
+    /**
+     * Gets the value of the productName property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the productName property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getProductName().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link Description80Type }
+     * 
+     * 
+     */
+    public List<Description80Type> getExtraName() {
+        if (extraName == null) {
+            extraName = new ArrayList<Description80Type>();
+        }
+        return this.extraName;
     }
 
     /**

@@ -24,9 +24,12 @@ The schema and subsequent updates will be provided on the GS1 websites.
 ---------------------------
 ]]></xsd:documentation>
     </xsd:annotation>
+
     <xsd:import namespace="urn:gs1:shared:shared_common:xsd:3" schemaLocation="../shared/SharedCommon.xsd"/>
     <xsd:import namespace="urn:gs1:tsd:tsd_common:xsd:1" schemaLocation="TSDCommon.xsd"/>
+
     <xsd:element name="productData" type="product_data:TSD_ProductDataType"/>
+
     <xsd:complexType name="TSD_ProductComponentRecordType">
         <xsd:sequence>
             <xsd:element name="componentNumber" type="xsd:nonNegativeInteger"/>
@@ -36,6 +39,7 @@ The schema and subsequent updates will be provided on the GS1 websites.
             <xsd:element name="avpList" type="tsd_common:TSD_AttributeValuePairListType" minOccurs="0"/>
         </xsd:sequence>
     </xsd:complexType>
+
     <xsd:complexType name="TSD_ProductDataRecordType">
         <xsd:sequence>
             <xsd:element name="productionVariantDescription" type="shared_common:Description70Type" minOccurs="0"/>
@@ -46,15 +50,25 @@ The schema and subsequent updates will be provided on the GS1 websites.
             <xsd:element name="avpList" type="tsd_common:TSD_AttributeValuePairListType" minOccurs="0"/>
         </xsd:sequence>
     </xsd:complexType>
+
     <xsd:complexType name="TSD_ProductDataType">
         <xsd:sequence>
-            <xsd:element name="epcURI" type="shared_common:EPCURIType"/>
+            <xsd:element name="serializedGLN" type="shared_common:SGLNType"/>
+            <xsd:element name="buildingName" type="shared_common:Description70Type"/>
+            <xsd:element name="buildingCode" type="shared_common:Description70Type"/>
+            <xsd:element name="longitude" type="xsd:double"/>
+            <xsd:element name="latitude" type="xsd:double"/>
+            <xsd:element name="productDataRecord" type="product_data:TSD_ProductDataRecordType" maxOccurs="unbounded"/>
+            <xsd:element name="avpList" type="tsd_common:TSD_AttributeValuePairListType" minOccurs="0"/>
+
+            <!--<xsd:element name="epcURI" type="shared_common:EPCURIType"/>
             <xsd:element name="targetMarket" type="shared_common:CountryCodeType"/>
             <xsd:element name="informationProviderGLN" type="shared_common:GLNType"/>
             <xsd:element name="informationProviderName" type="xsd:string"/>
             <xsd:element name="timeToLive" type="xsd:duration" minOccurs="0"/>
             <xsd:element name="productDataRecord" type="product_data:TSD_ProductDataRecordType" maxOccurs="unbounded"/>
-            <xsd:element name="avpList" type="tsd_common:TSD_AttributeValuePairListType" minOccurs="0"/>
+            <xsd:element name="avpList" type="tsd_common:TSD_AttributeValuePairListType" minOccurs="0"/>-->
         </xsd:sequence>
     </xsd:complexType>
+
 </xsd:schema>

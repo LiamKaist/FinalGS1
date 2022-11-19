@@ -52,6 +52,9 @@ public class ObjectFactory {
     private final static QName _FoodAndBeveragePreparationInformationModule_QNAME = new QName("urn:gs1:tsd:food_and_beverage_preparation_information_module:xsd:1", "foodAndBeveragePreparationInformationModule");
     private final static QName _BusLineInformationModule_QNAME = new QName("urn:gs1:tsd:bus_line_information_module:xsd:1", "busLineInformationModule");
     private final static QName _BusStopInformationModule_QNAME = new QName("urn:gs1:tsd:bus_stop_information_module:xsd:1", "busStopInformationModule");
+    /*The Content Liam has added is below*/
+    private final static QName _LiamTestModule_QNAME = new QName("urn:gs1:tsd:liam_test_module:xsd:1", "liamTestModule");
+    
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: org.oliot.heroku.tsd.models.schema
@@ -59,6 +62,8 @@ public class ObjectFactory {
      */
     public ObjectFactory() {
     }
+
+
 
     /**
      * Create an instance of {@link TSDProductDataType }
@@ -1351,5 +1356,20 @@ public class ObjectFactory {
     public JAXBElement<TSDBusStopInformationModuleType> createBusStopInformationModule(TSDBusStopInformationModuleType value) {
         return new JAXBElement<TSDBusStopInformationModuleType>(_BusStopInformationModule_QNAME, TSDBusStopInformationModuleType.class, null, value);
     }
+
+    /*More code added by Liam BELOW*/
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link TSDLiamTestModuleType }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "urn:gs1:tsd:liam_test_module:xsd:1", name = "liamTestModule")
+    public JAXBElement<TSDLiamTestModuleType> createLiamTestModule(TSDLiamTestModuleType value) {
+        return new JAXBElement<TSDLiamTestModuleType>(_LiamTestModule_QNAME, TSDLiamTestModuleType.class, null, value);
+    }
+
+
+    
+
 
 }

@@ -32,6 +32,7 @@ The schema and subsequent updates will be provided on the GS1 websites.
     <xsd:complexType name="TSD_BasicProductInformationModuleType">
         <xsd:sequence>
             <xsd:element name="productName" type="shared_common:Description80Type" maxOccurs="unbounded"/>
+            <xsd:element name="extraName" type="shared_common:Description80Type" minOccurs="1" maxOccurs="unbounded"/> 
             <xsd:element name="consumerMarketingDescription" type="shared_common:Description2500Type" minOccurs="0"
                          maxOccurs="unbounded"/>
             <xsd:element name="gpcCategoryCode" minOccurs="0">

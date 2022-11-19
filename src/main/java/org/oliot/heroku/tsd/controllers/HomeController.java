@@ -68,8 +68,9 @@ public class HomeController {
         return "index";
     }
 
-    @PostMapping("/insert")
-    public String insert(@RequestParam("editor") String xmldata) {
+    /* @PostMapping("/insert")
+    public String insert() {
+        String datatodisplay ="Liam";
         try {
             SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
             File schemaFile = new File("src/main/java/org/oliot/heroku/tsd/models/schema/tsd/ProductData.xsd");
@@ -94,8 +95,70 @@ public class HomeController {
             throw new ResourceGeneralException();
         }
 
+        return datatodisplay;
+    } */
+    
+
+    @PostMapping("/insert")
+    public String insert(@RequestParam("editor") String xmldata) { /*My understanding is that editor is the key for the xml being sent and here we are requesting the xml being sent's xml */
+        try {
+
+            // to check receiving end
+            SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
+            File schemaFile = new File("src/main/java/org/oliot/heroku/tsd/models/schema/tsd/ProductData.xsd");
+            Schema schema = schemaFactory.newSchema(schemaFile);
+            
+            JAXBContext jaxbContext = JAXBContext.newInstance(ObjectFactory.class);
+            Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
+            unmarshaller.setSchema(schema);
+            unmarshaller.setEventHandler(new ProductDataValidationEventHandler());
+
+            StringReader reader = new StringReader(xmldata);
+
+            JAXBElement<TSDProductDataType> jaxbElement
+                    = (JAXBElement<TSDProductDataType>) unmarshaller.unmarshal(reader);
+            TSDProductDataType tsdProductDataType = jaxbElement.getValue();
+            repository.save(tsdProductDataType);
+        } catch (DuplicateKeyException e) {
+            e.printStackTrace();
+            throw new ResourceConflictException();
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new ResourceGeneralException();
+        }
+
         return "redirect:/";
-    }
+    } /*this is the original post mapping */
+
+    /*@PostMapping("/insert")
+    public String insert(@RequestParam("editor") String xmldata) {
+        try {
+            SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
+            File schemaFile = new File("src/main/java/org/oliot/heroku/tsd/models/schema/tsd/LiamTestModule.xsd");
+            Schema schema = schemaFactory.newSchema(schemaFile);
+
+            JAXBContext jaxbContext = JAXBContext.newInstance(ObjectFactory.class);
+            Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
+            unmarshaller.setSchema(schema);
+            unmarshaller.setEventHandler(new ProductDataValidationEventHandler());
+
+            StringReader reader = new StringReader(xmldata);
+
+            JAXBElement<TSDLiamTestModuleType> jaxbElement
+                    = (JAXBElement<TSDLiamTestModuleType>) unmarshaller.unmarshal(reader);
+            TSDLiamTestModuleType tsdLiamModuleType = jaxbElement.getValue();
+            repository.save(tsdLiamModuleType);
+        } catch (DuplicateKeyException e) {
+            e.printStackTrace();
+            throw new ResourceConflictException();
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new ResourceGeneralException();
+        }
+
+        return "redirect:/";
+    }*/
+    
 
     @PostMapping("/reset")
     public String reset() {

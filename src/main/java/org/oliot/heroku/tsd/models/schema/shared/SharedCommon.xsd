@@ -1429,6 +1429,15 @@ The schema and subsequent updates will be provided on the GS1 websites.
             <xsd:pattern value="\d{14}[-!&quot;%&amp;'()*+,./0-9:;&lt;=&gt;?A-Z_a-z]{0,16}"/>
         </xsd:restriction>
     </xsd:simpleType>
+
+    <!--Added by Liam-->
+    <xsd:simpleType name="SGLNType">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="\d{13}[-!&quot;%&amp;'()*+,./0-9:;&lt;=&gt;?A-Z_a-z]{1,20}"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <!--Added by Liam-->
+
     <xsd:simpleType name="GSINType">
         <xsd:restriction base="xsd:string">
             <xsd:pattern value="\d{17}"/>
