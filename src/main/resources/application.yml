@@ -2,7 +2,7 @@
 spring:
   data:
     mongodb:
-      uri: ${MONGODB_URI:mongodb://admin:admin@ac-kya15la-shard-00-00.iyzmums.mongodb.net:27017,ac-kya15la-shard-00-01.iyzmums.mongodb.net:27017,ac-kya15la-shard-00-02.iyzmums.mongodb.net:27017/?ssl=true&replicaSet=atlas-ferf2q-shard-0&authSource=admin&retryWrites=false&w=majority/trusted_data}
+      uri: ${MONGODB_URI:mongodb://localhost:27017/trusted_data}
   jackson:
     default-property-inclusion: non_null
 
