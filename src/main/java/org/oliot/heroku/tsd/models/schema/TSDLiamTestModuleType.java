@@ -18,8 +18,8 @@ import java.util.List;
 
     <xsd:complexType name="TSD_LiamTestModuleType">
         <sequence>
-            <xsd:element name="productName" type="shared_common:Description70Type" minOccurs="1" maxOccurs="2"/>      
-            <xsd:element name="extraName" type="shared_common:Description70Type" minOccurs="1" maxOccurs="2">
+            <xsd:element name="RoomName" type="shared_common:Description70Type" minOccurs="1" maxOccurs="2"/>      
+            <xsd:element name="RoomPurpose" type="shared_common:Description70Type" minOccurs="1" maxOccurs="2">
         </sequence>
     </xsd:complexType>
 
@@ -32,9 +32,9 @@ package org.oliot.heroku.tsd.models.schema;
 
 
 @XmlType(name = "TSD_LiamTestModuleType", namespace = "urn:gs1:tsd:liam_test_module:xsd:1", propOrder = {
-    "productName",
-    "extraName",
-    "sgln"
+    "roomName",
+    "roomPurpose",
+    "access"
 })
 
 
@@ -45,27 +45,27 @@ public class TSDLiamTestModuleType {
     private final String id = null;
 
     @XmlElement(required = true)
-    protected List<Description70Type> productName;
+    protected List<Description70Type> roomName;
     @XmlElement(required = true)
-    protected List<Description70Type> extraName;
+    protected List<Description70Type> roomPurpose;
     @XmlElement(required = true)
-    protected String sgln;
+    protected List<Description70Type> access;
 
 
 
     /**
-     * Gets the value of the productName property.
+     * Gets the value of the RoomName property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the productName property.
+     * This is why there is not a <CODE>set</CODE> method for the RoomName property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getProductName().add(newItem);
+     *    getRoomName().add(newItem);
      * </pre>
      * 
      * 
@@ -75,28 +75,28 @@ public class TSDLiamTestModuleType {
      * 
      * 
      */
-    public List<Description70Type> getProductName() {
-        if (productName == null) {
-            productName = new ArrayList<Description70Type>();
+    public List<Description70Type> getRoomName() {
+        if (roomName == null) {
+            roomName = new ArrayList<Description70Type>();
         }
-        return this.productName;
+        return this.roomName;
     }
 
     
      
     /**
-     * Gets the value of the productName property.
+     * Gets the value of the RoomName property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the productName property.
+     * This is why there is not a <CODE>set</CODE> method for the RoomName property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getProductName().add(newItem);
+     *    getRoomName().add(newItem);
      * </pre>
      * 
      * 
@@ -108,11 +108,11 @@ public class TSDLiamTestModuleType {
      */
      
    
-    public List<Description70Type> getExtraName() {
-       if (extraName == null) {
-           extraName = new ArrayList<Description70Type>();
+    public List<Description70Type> getRoomPurpose() {
+       if (roomPurpose == null) {
+           roomPurpose = new ArrayList<Description70Type>();
        }
-       return this.extraName;
+       return this.roomPurpose;
     }
 
 
@@ -124,8 +124,11 @@ public class TSDLiamTestModuleType {
      *     {@link String }
      *     
      */
-    public String getSgln() {
-        return sgln;
+    public List<Description70Type> getAccess() {
+        if (access == null) {
+            access = new ArrayList<Description70Type>();
+        }
+        return this.access;
     }
    
 }

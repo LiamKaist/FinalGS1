@@ -33,9 +33,11 @@
 
     <xsd:complexType name="TSD_LiamTestModuleType">
         <xsd:sequence>
-            <xsd:element name="productName" type="shared_common:Description70Type" minOccurs="1" maxOccurs="2"/>      
-            <xsd:element name="extraName" type="shared_common:Description70Type" minOccurs="1" maxOccurs="2"/>
-            <xsd:element name="sgln" type="shared_common:GRAIType"/>
+
+            <xsd:element name="roomName" type="shared_common:Description70Type" minOccurs="1"/>
+            <xsd:element name="roomPurpose" type="shared_common:Description70Type" minOccurs="1"/>
+            <xsd:element name="access" type="shared_common:Description70Type" maxOccurs="1"/>
+
         </xsd:sequence>
     </xsd:complexType>
 </xsd:schema>
