@@ -61,7 +61,7 @@
         $('#08801019310614').click(function (event){
             event.preventDefault();
             $.ajax({
-                url: 'https://github.com/LiamKaist/xmlbank/blob/main/gs1V5xml.xml'
+                url: 'https://raw.githubusercontent.com/LiamKaist/xmlbank/main/gs1V5xml.xml'
                 ,success: function(response) {
                     editor.getDoc().setValue(response);
                 }
