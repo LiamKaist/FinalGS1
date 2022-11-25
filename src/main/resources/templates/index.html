@@ -29,14 +29,14 @@
 <th:block layout:fragment="content">
     <div class="starter-template">
         <form action="/insert" method="post">
-            <p class="lead">Enter Product Data</p>
+            <p class="lead">Enter Building Data</p>
             <textarea rows="50" cols="100" id="editor" name="editor"></textarea>
             <br/>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
         <hr/>
         <p class="lead">Load Sample Product Data</p>
-        <button class="btn btn-default" id="08801019310614">해태 버터링</button>
+        <button class="btn btn-default" id="08801019310614">Building Data</button>
         <button class="btn btn-default" id="08801037088168">오레오 화이트크림</button>
         <button class="btn btn-default" id="08801056059842">아이시스 8.0</button>
         <button class="btn btn-default" id="08808244201014">삼다수</button>
@@ -61,7 +61,7 @@
         $('#08801019310614').click(function (event){
             event.preventDefault();
             $.ajax({
-                url: 'https://raw.githubusercontent.com/oliot-tsd/tsd-heroku/master/src/test/resources/xmls/ProductData/ProductData_08801019310614.xml'
+                url: 'https://github.com/LiamKaist/xmlbank/blob/main/gs1V5xml.xml'
                 ,success: function(response) {
                     editor.getDoc().setValue(response);
                 }
