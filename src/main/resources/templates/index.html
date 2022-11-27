@@ -35,15 +35,10 @@
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
         <hr/>
-        <p class="lead">Load Sample Product Data</p>
+        <p class="lead">Load Sample Building Data</p>
         <button class="btn btn-default" id="08801019310614">Building Data</button>
-        <button class="btn btn-default" id="08801037088168">오레오 화이트크림</button>
-        <button class="btn btn-default" id="08801056059842">아이시스 8.0</button>
-        <button class="btn btn-default" id="08808244201014">삼다수</button>
-        <button class="btn btn-default" id="02399610000004">감자</button>
-        <button class="btn btn-default" id="00430000007905">양배추</button>
         <hr/>
-        <p class="lead">Danger Zone</p>
+        <p class="lead">Danger</p>
         <form action="/reset" method="post">
             <button type="submit" class="btn btn-danger">Reset Database</button>
         </form>
@@ -62,76 +57,6 @@
             event.preventDefault();
             $.ajax({
                 url: 'https://raw.githubusercontent.com/LiamKaist/xmlbank/main/gs1V5xml.xml'
-                ,success: function(response) {
-                    editor.getDoc().setValue(response);
-                }
-                ,error: function() {
-                    editor.getDoc().setValue("Unable to Load XML");
-                }
-            });
-            return false;
-        });
-
-        $('#08801037088168').click(function (event){
-            event.preventDefault();
-            $.ajax({
-                url: 'https://raw.githubusercontent.com/oliot-tsd/tsd-heroku/master/src/test/resources/xmls/ProductData/ProductData_08801037088168.xml'
-                ,success: function(response) {
-                    editor.getDoc().setValue(response);
-                }
-                ,error: function() {
-                    editor.getDoc().setValue("Unable to Load XML");
-                }
-            });
-            return false;
-        });
-
-        $('#08801056059842').click(function (event){
-            event.preventDefault();
-            $.ajax({
-                url: 'https://raw.githubusercontent.com/oliot-tsd/tsd-heroku/master/src/test/resources/xmls/ProductData/ProductData_08801056059842.xml'
-                ,success: function(response) {
-                    editor.getDoc().setValue(response);
-                }
-                ,error: function() {
-                    editor.getDoc().setValue("Unable to Load XML");
-                }
-            });
-            return false;
-        });
-
-        $('#08808244201014').click(function (event){
-            event.preventDefault();
-            $.ajax({
-                url: 'https://raw.githubusercontent.com/oliot-tsd/tsd-heroku/master/src/test/resources/xmls/ProductData/ProductData_08808244201014.xml'
-                ,success: function(response) {
-                    editor.getDoc().setValue(response);
-                }
-                ,error: function() {
-                    editor.getDoc().setValue("Unable to Load XML");
-                }
-            });
-            return false;
-        });
-
-        $('#02399610000004').click(function (event){
-            event.preventDefault();
-            $.ajax({
-                url: 'https://raw.githubusercontent.com/oliot-tsd/tsd-heroku/master/src/test/resources/xmls/ProductData/ProductData_02399610000004.xml'
-                ,success: function(response) {
-                    editor.getDoc().setValue(response);
-                }
-                ,error: function() {
-                    editor.getDoc().setValue("Unable to Load XML");
-                }
-            });
-            return false;
-        });
-
-        $('#00430000007905').click(function (event){
-            event.preventDefault();
-            $.ajax({
-                url: 'https://raw.githubusercontent.com/oliot-tsd/tsd-heroku/master/src/test/resources/xmls/ProductData/ProductData_00430000007905.xml'
                 ,success: function(response) {
                     editor.getDoc().setValue(response);
                 }
