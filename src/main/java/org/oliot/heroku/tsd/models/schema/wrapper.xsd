@@ -30,5 +30,7 @@
     <!--The Content Liam has added is below-->
     <xs:import namespace="urn:gs1:tsd:liam_test_module:xsd:1" schemaLocation="./tsd/LiamTestModule.xsd"/>
     <xs:import namespace="urn:gs1:tsd:tsd_custom:xsd:1" schemaLocation="./tsd/TSDCustom.xsd"/>
+    <xs:import namespace="urn:gs1:tsd:building_services_module:xsd:1" schemaLocation="./tsd/BuildingServicesModule.xsd"/>
+    <xs:import namespace="urn:gs1:tsd:room_module:xsd:1" schemaLocation="./tsd/RoomModule.xsd"/>
 
 </xs:schema>

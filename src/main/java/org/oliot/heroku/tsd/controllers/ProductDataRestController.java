@@ -50,9 +50,9 @@ public class ProductDataRestController {
     @GetMapping("/resource/{latitude}/{longitude}/MetaInformation2")
     public Double getMetaInformation2(@PathVariable Double latitude,@PathVariable Double longitude) {
         //TSDProductDataType header;
-        Double allah=Havershine.havershineMethod(longitude,latitude,35.25488,123.254569);
+        Double doble=Havershine.havershineMethod(longitude,latitude,35.25488,123.254569);
         //header = repository.getProductHeaderDouble(longitude,latitude); //Problem is that getProductHeader only accepts strings, I would need it to accept Double I think to be able to find the longitude double in xml
-        return allah;
+        return doble;
     }
     
     @GetMapping("/resource/{latitude}/{longitude}/{radius}/Nearby")
@@ -77,6 +77,21 @@ public class ProductDataRestController {
         
         return buildinglist;
     }
+
+
+    @GetMapping("/building/{sgln}")
+    public TSDProductDataType getBuilding(@PathVariable String sgln) { 
+        TSDProductDataType fullData;
+        fullData = repository.getFull(sgln); 
+        return fullData;
+    }
+
+
+
+
+
+
+
     
     @GetMapping("/resource/{epcURI}/BasicProductInformation")
     public TSDBasicProductInformationModuleType getBasicProductInformation(@PathVariable String epcURI) {
@@ -108,6 +123,7 @@ public class ProductDataRestController {
         return iterator.isEmpty() ? null : modulelist; // Question mark is the ternary condition , should remember it
     }
 
+    
 
 
     /*Code Liam wrote Below */

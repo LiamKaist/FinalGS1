@@ -100,6 +100,14 @@ class ProductDataRepositoryImpl implements ProductDataRepositoryCustom {
         return mongoTemplate.findOne(query, TSDProductDataType.class);
     }
 
+    @Override
+    public TSDProductDataType getFull(String serializedGLN) {
+        Query query = new Query();
+        query.addCriteria(Criteria.where("serializedGLN").is(serializedGLN));
+
+        return mongoTemplate.findOne(query, TSDProductDataType.class);
+    }
+
 
     @Override
     public TSDProductDataType getProductHeaderDouble(Double longitude, Double latitude) {

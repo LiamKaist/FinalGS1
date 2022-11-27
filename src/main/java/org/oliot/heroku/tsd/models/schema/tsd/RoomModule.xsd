@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:room_module="urn:gs1:tsd:room_module:xsd:1"
+            xmlns:shared_common="urn:gs1:shared:shared_common:xsd:3" xmlns:tsd_common="urn:gs1:tsd:tsd_common:xsd:1"
+            targetNamespace="urn:gs1:tsd:room_module:xsd:1" elementFormDefault="unqualified"
+            attributeFormDefault="unqualified" version="1.1">
+
+
+    <xsd:import namespace="urn:gs1:shared:shared_common:xsd:3" schemaLocation="../shared/SharedCommon.xsd"/>
+    <xsd:import namespace="urn:gs1:tsd:tsd_common:xsd:1" schemaLocation="TSDCommon.xsd"/>
+
+    <xsd:element name="roomModule" type="room_module:TSD_RoomModuleType"/>
+
+
+    <xsd:complexType name="TSD_RoomLocationType">
+        <xsd:sequence>
+            <xsd:element name="latitude" type="xsd:double" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="longitude" type="xsd:double" minOccurs="1" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="TSD_RoomModuleType">
+        <xsd:sequence>
+            <xsd:element name="roomNumber" type="xsd:integer" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="roomFloor" type="xsd:integer" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="contactNumber" type="xsd:long" minOccurs="1"/>
+            <xsd:element name="roomName" type="shared_common:Description70Type" minOccurs="1"/>
+            <xsd:element name="roomPurpose" type="shared_common:Description500Type" minOccurs="1"/>
+            <xsd:element name="roomLocation" type="room_module:TSD_RoomLocationType" maxOccurs="1"/>
+            <xsd:element name="capacity" type="xsd:integer" maxOccurs="1"/>
+            <xsd:element name="isReserved" type="xsd:boolean" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+</xsd:schema>

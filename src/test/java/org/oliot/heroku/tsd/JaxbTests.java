@@ -49,13 +49,13 @@ public class JaxbTests {
         unmarshaller.setSchema(schema);
 
         File xml = new File("src/test/resources/xmls/ProductData/ProductData_1.xml");
-
+        /* 
         JAXBElement<TSDProductDataType> jaxbElement
                 = (JAXBElement<TSDProductDataType>) unmarshaller.unmarshal(xml);
         TSDProductDataType tsdProductDataType
                 = jaxbElement.getValue();
         System.out.println(tsdProductDataType.getSerializedGLN());
-        ExtensionType obj = tsdProductDataType.getProductDataRecord().get(0).getModule().get(0);
+        ExtensionType obj = tsdProductDataType.getBuildingRecord().get(0).getModule().get(0);
         for (Object o: obj.getAny()) {
             JAXBElement elem = (JAXBElement)o;
             switch (elem.getName().getLocalPart()) {
@@ -69,7 +69,7 @@ public class JaxbTests {
                             (TSDProductAllergenInformationModuleType) elem.getValue();
                     System.out.println(productAllergenInformationModuleType.getAllergenRelatedInformation().get(0).getAllergenSpecificationAgency());
             }
-        }
+        }*/
     }
 
     @Test

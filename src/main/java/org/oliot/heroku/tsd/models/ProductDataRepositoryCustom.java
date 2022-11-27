@@ -24,9 +24,11 @@ import java.util.List;
 
 interface ProductDataRepositoryCustom {
     List<JAXBElement> getModuleInformation(Class moduleClass, String epcURI);
-    TSDProductDataType getProductHeader(String epcURI);
+    TSDProductDataType getProductHeader(String serializedGLN);
     //Added By Liam
     TSDProductDataType getProductHeaderDouble(Double longitude, Double latitude);
+    TSDProductDataType getFull(String serializedGLN);
+    
     List<JAXBElement> getModuleInformationCoord(Class moduleClass, Double longitude, Double latitude);
     void insertOrReplace(TSDProductDataType tsdProductDataType);
 }

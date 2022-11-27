@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:product_data="urn:gs1:tsd:product_data:xsd:1"
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:building_services_module="urn:gs1:tsd:building_services_module:xsd:1"
             xmlns:shared_common="urn:gs1:shared:shared_common:xsd:3" xmlns:tsd_common="urn:gs1:tsd:tsd_common:xsd:1"
-            targetNamespace="urn:gs1:tsd:product_data:xsd:1" elementFormDefault="unqualified"
+            targetNamespace="urn:gs1:tsd:building_services_module:xsd:1" elementFormDefault="unqualified"
             attributeFormDefault="unqualified" version="1.1">
     <xsd:annotation>
         <xsd:documentation><![CDATA[---------------------------
@@ -24,32 +25,28 @@ The schema and subsequent updates will be provided on the GS1 websites.
 ---------------------------
 ]]></xsd:documentation>
     </xsd:annotation>
-
     <xsd:import namespace="urn:gs1:shared:shared_common:xsd:3" schemaLocation="../shared/SharedCommon.xsd"/>
     <xsd:import namespace="urn:gs1:tsd:tsd_common:xsd:1" schemaLocation="TSDCommon.xsd"/>
 
-    <xsd:element name="productData" type="product_data:TSD_ProductDataType"/>
+    <xsd:element name="buildingServicesModule" type="building_services_module:TSD_BuildingServicesModuleType"/>
 
-    <xsd:complexType name="TSD_BuildingRecordType">
+    <xsd:complexType name="TSD_BuildingServicesModuleType">
         <xsd:sequence>
-            <xsd:element name="buildingDescription" type="shared_common:Description1000Type" minOccurs="0"/>
-            <xsd:element name="contactNumber" type="xsd:integer" minOccurs="0"/>
-            <xsd:element name="module" type="shared_common:ExtensionType" maxOccurs="unbounded"/>
+            <xsd:element name="numberOfServiceTypes" type="xsd:integer" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="campusServiceType">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string">
+                        <xsd:enumeration value="Academia"/>
+                        <xsd:enumeration value="Financial"/>
+                        <xsd:enumeration value="Basic Necessities"/>
+                        <xsd:enumeration value="Miscellaneous"/>
+                        <xsd:enumeration value="Medical"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="module" type="shared_common:ExtensionType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="avpList" type="tsd_common:TSD_AttributeValuePairListType" minOccurs="0"/>
         </xsd:sequence>
     </xsd:complexType>
-
-    <xsd:complexType name="TSD_ProductDataType">
-        <xsd:sequence>
-            <xsd:element name="serializedGLN" type="shared_common:SGLNType"/>
-            <xsd:element name="buildingName" type="shared_common:Description70Type"/>
-            <xsd:element name="buildingCode" type="shared_common:Description70Type"/>
-            <xsd:element name="longitude" type="xsd:double"/>
-            <xsd:element name="latitude" type="xsd:double"/>
-            <xsd:element name="buildingRecord" type="product_data:TSD_BuildingRecordType" maxOccurs="unbounded"/>
-            <xsd:element name="avpList" type="tsd_common:TSD_AttributeValuePairListType" minOccurs="0"/>
-
-        </xsd:sequence>
-    </xsd:complexType>
-
+    
 </xsd:schema>

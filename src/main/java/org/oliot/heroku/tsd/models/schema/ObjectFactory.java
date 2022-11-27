@@ -54,13 +54,24 @@ public class ObjectFactory {
     private final static QName _BusStopInformationModule_QNAME = new QName("urn:gs1:tsd:bus_stop_information_module:xsd:1", "busStopInformationModule");
     /*The Content Liam has added is below*/
     private final static QName _LiamTestModule_QNAME = new QName("urn:gs1:tsd:liam_test_module:xsd:1", "liamTestModule");
-    
+    private final static QName _BuildingServicesModule_QNAME = new QName("urn:gs1:tsd:building_services_module:xsd:1", "buildingServicesModule");
+    private final static QName _RoomModule_QNAME = new QName("urn:gs1:tsd:room_module:xsd:1", "RoomModule");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: org.oliot.heroku.tsd.models.schema
      *
      */
     public ObjectFactory() {
+    }
+
+   
+    public TSDRoomModuleType createTSDRoomModuleType() {
+        return new TSDRoomModuleType();
+    }
+
+    
+    public TSDBuildingServicesModuleType createTSDBuildingServicesModuleType() {
+        return new TSDBuildingServicesModuleType();
     }
 
 
@@ -1366,6 +1377,24 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "urn:gs1:tsd:liam_test_module:xsd:1", name = "liamTestModule")
     public JAXBElement<TSDLiamTestModuleType> createLiamTestModule(TSDLiamTestModuleType value) {
         return new JAXBElement<TSDLiamTestModuleType>(_LiamTestModule_QNAME, TSDLiamTestModuleType.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link TSDLiamTestModuleType }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "urn:gs1:tsd:building_services_module:xsd:1", name = "buildingServicesModule")
+    public JAXBElement<TSDBuildingServicesModuleType> createBuildingServicesModule(TSDBuildingServicesModuleType value) {
+        return new JAXBElement<TSDBuildingServicesModuleType>(_BuildingServicesModule_QNAME, TSDBuildingServicesModuleType.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link TSDLiamTestModuleType }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "urn:gs1:tsd:room_module:xsd:1", name = "roomModule")
+    public JAXBElement<TSDRoomModuleType> createRoomModule(TSDRoomModuleType value) {
+        return new JAXBElement<TSDRoomModuleType>(_RoomModule_QNAME, TSDRoomModuleType.class, null, value);
     }
 
 

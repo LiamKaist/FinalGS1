@@ -60,7 +60,7 @@ import java.util.List;
     "buildingCode",
     "longitude",
     "latitude",
-    "productDataRecord",
+    "buildingRecord",
     "avpList"
 })
 
@@ -80,7 +80,7 @@ public class TSDProductDataType {
     @XmlElement(required = true)
     protected Double latitude;
     @XmlElement(required = true)
-    protected List<TSDProductDataRecordType> productDataRecord;
+    protected List<TSDBuildingRecordType> buildingRecord;
     protected TSDAttributeValuePairListType avpList;
 
     /**
@@ -226,11 +226,11 @@ public class TSDProductDataType {
      *
      *
      */
-    public List<TSDProductDataRecordType> getProductDataRecord() {
-        if (productDataRecord == null) {
-            productDataRecord = new ArrayList<TSDProductDataRecordType>();
+    public List<TSDBuildingRecordType> getBuildingRecord() {
+        if (buildingRecord == null) {
+            buildingRecord = new ArrayList<TSDBuildingRecordType>();
         }
-        return this.productDataRecord;
+        return this.buildingRecord;
     }
 
     /**
