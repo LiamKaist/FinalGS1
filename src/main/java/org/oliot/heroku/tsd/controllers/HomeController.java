@@ -198,7 +198,7 @@ public class HomeController {
 
     @PostMapping("/reset")
     public String reset() {
-        repository.deleteAll();
+        //repository.deleteAll(); //Removed the possibility to delete the repo
         return "redirect:/";
     }
 }
